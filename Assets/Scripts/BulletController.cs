@@ -8,21 +8,31 @@ public class BulletController : MonoBehaviour
     Vector2 movementDirection;
 
     public float movementSpeed = 1f;
-
+    private Camera cam;
+    private int screenWidth = 8;
+    private int screenHeight = 4;
+    private RectTransform rectTransform;
 
     private Vector3 vel;
+    private float width;
+    private float height;
 
     private void Start()
     {
         GameObject player = GameObject.Find("Player");
         PlayerController playerController = player.GetComponent<PlayerController>();
         movementDirection = playerController.lastMovement;
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        rectTransform = GetComponent<RectTransform>();
+        width = GetComponent<SpriteRenderer>().bounds.size.x;
+        height = GetComponent<SpriteRenderer>().bounds.size.y;
     }
     private void Update()
     {
-        Vector3 screenVector = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        Vector3 screenVector = cam.transform.position;
 
-        if (transform.position.x < screenVector.x * -1 || transform.position.x > screenVector.x || transform.position.y > screenVector.y || transform.position.y < screenVector.y * -1)
+
+        if (transform.position.x < screenVector.x - screenWidth - width * 2 || transform.position.x > screenVector.x + screenWidth + width * 2 || transform.position.y > screenVector.y + screenHeight + height * 2 || transform.position.y < screenVector.y - screenHeight - height * 2)
         {
             Destroy(gameObject);
         }
