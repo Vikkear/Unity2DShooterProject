@@ -11,18 +11,17 @@ Open "Latest build" then run "2DShooterProj.exe"
 - Health bar
 - Stamina bar
 - Camera movement
+- Main Menu (for now at least, new options will probably be needed in the future)
 
 ### In progress
 - Enemies
-- Exit game
+- Pause menu
 
 ### TODO (update as more things gets added)
 - Replace cubes/spheres with sprites
 - Design first level
 - Get sprites for my walls/floor etc.
 - Enemy pathfinding
-- Main menu
-- Pause menu
 - First level
 - Boss mechanics (health bar/special ability?)
 
