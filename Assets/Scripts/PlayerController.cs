@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour
             isRunning = true;
         }
 
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
+
         if (Input.GetKeyUp("left shift"))
         {
             movementSpeed = savedMovement;
