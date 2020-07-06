@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,15 +13,17 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 lastMovement;
 
-    [SerializeField] private StaminaBar staminaBar;
-    [SerializeField] private StaminaBar healthBar;
-
     private float savedMovement;
     private float stamina = 100;
-    private int health = 100;
+    public float health = 100;
+
+    public float maxHealth = 100;
+    public float maxStamina = 100;
     private bool isRunning = false;
 
     public GameObject bullet;
+    public Slider healthBar;
+    public Slider staminaBar;
 
     private void Start()
     {
@@ -65,8 +68,8 @@ public class PlayerController : MonoBehaviour
             Instantiate(bullet, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, 0), Quaternion.Euler(0, 0, (float)angle));
         }
 
-        staminaBar.setSize(stamina * 0.01f);
-        healthBar.setSize(health * 0.01f);
+        staminaBar.value = stamina / maxStamina;
+
     }
 
     private void FixedUpdate()
@@ -97,10 +100,17 @@ public class PlayerController : MonoBehaviour
         {
             gameOver();
         }
+
+        updateHealthBar();
     }
 
     private void gameOver()
     {
         Debug.Log("Ded");
+    }
+
+    private void updateHealthBar()
+    {
+        healthBar.value = health / maxHealth;
     }
 }

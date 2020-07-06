@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+OUTDATED SCRIPT.
+
+
+*/
+
+
 public class StaminaBar : MonoBehaviour
 {
     private Transform bar;
